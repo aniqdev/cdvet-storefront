@@ -2429,6 +2429,42 @@ ul.products.columns-3 li.product .single_add_to_cart_button::before{
 .single-product div.product .woocommerce-product-gallery a img{
 	margin: auto;
 }
+
+.cs-product-title-wrapper{
+	display: flex;
+	justify-content:  space-between;
+}
+.cs-product-title{
+	font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 5px solid #5EB73F;
+}
+.cs-product-sku{
+	padding: 5px;
+    line-height: 22px;
+    color: #9B9595;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.storefront-full-width-content .related.products > h2:first-child,
+.woocommerce-tabs .panel h2:first-of-type {
+    font-size: 1.618em;
+    margin-bottom: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 3px solid #5EB73F;
+    display: inline-block;
+}
+
+
+
+
+
+
+
+
+
 @media (min-width: 768px){
 	.storefront-full-width-content.single-product #page div.product .woocommerce-product-gallery {
 	    width: 44.130435%;

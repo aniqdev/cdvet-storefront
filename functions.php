@@ -119,49 +119,7 @@ function woocommerce_after_shop_loop_item_after()
 
 
 function woocommerce_after_shop_loop_item_before() {
-	global $product;
-
-	if ( ! $short_description = $product->get_short_description() ) return;
-	?>
-	<div class="loop-product-bottom">
-		<div class="product-price">
-		<?php
-			if ($product->is_type('variable')) {
-				echo '€'.$product->get_variation_regular_price();
-			}else{
-				echo '€'.$product->get_regular_price();
-			}
-		?>
-		</div>
-		<?php if ($product->is_type('variable')){ ?>
-		<div class="product-variables">
-			<select name="" id="">
-				<option value="">100гр</option>
-				<option value="">200гр</option>
-				<option value="">300гр</option>
-				<option value="">400гр</option>
-				<option value="">500гр</option>
-			</select>
-		</div>
-		<?php }	?>
-		<div class="product-add-to-cart-btn"><div style="display: flex;">
-		<?php
-			if ($product->is_type('variable')) {
-				echo '<a href="" class="button product_type_simple add_to_cart_button ajax_add_to_cart"></a>';
-			}else{
-				echo sprintf(
-					'<a href="%s" data-quantity="%s" class="%s" %s>%s</a>',
-					esc_url( $product->add_to_cart_url() ),
-					esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
-					esc_attr( isset( $args['class'] ) ? $args['class'] : 'button product_type_simple add_to_cart_button ajax_add_to_cart' ),
-					isset( $args['attributes'] ) ? wc_implode_html_attributes( $args['attributes'] ) : 'data-product_id="'.$product->get_id().'"',
-					esc_html( $product->add_to_cart_text() )
-				);
-			}
-		?>
-		</div></div>
-	</div>
-	<?php
+	include 'templates/category-product-bottom.php';
 }
 add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_after_shop_loop_item_before', 5 );
 
@@ -173,34 +131,9 @@ remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_l
 
 function cs_product_after_title()
 {
-	global $product;
-	?>
-	<h5>After Title</h5>
-	<h4><?php //print_r($product->get_variation_prices()); ?></h4>
-	<ul class="cs-variants">
-	<?php foreach ($product->get_available_variations() as $key => $variation): ?>
-		<li class="cs-variant">
-			<div class="price">€<?= $variation['display_regular_price']; ?></div>
-			<div class="attr"><?= str_replace('-', '', $variation['attributes']['attribute_pa_size']); ?></div>
-			<select class="amo">
-				<option name="1" id="">1st.</option>
-				<option name="2" id="">2st.</option>
-				<option name="3" id="">3st.</option>
-				<option name="4" id="">4st.</option>
-				<option name="5" id="">5st.</option>
-				<option name="6" id="">6st.</option>
-				<option name="7" id="">7st.</option>
-				<option name="8" id="">8st.</option>
-				<option name="9" id="">9st.</option>
-				<option name="10" id="">10st.</option>
-			</select>
-			<div class="buy-btn">In den Warenkorb</div>
-		</li>
-	<?php endforeach; ?>
-	</ul>
-	<pre>
-	<?php //print_r($product->get_available_variations()) ?>
-	</pre>
-	<?php
+	include 'templates/single-product-after-title.php';
 }
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
 add_action( 'woocommerce_single_product_summary', 'cs_product_after_title', 6 );
