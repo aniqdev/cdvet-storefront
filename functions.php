@@ -137,3 +137,10 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
 add_action( 'woocommerce_single_product_summary', 'cs_product_after_title', 6 );
+
+// FOOTER
+function cs_footer()
+{
+	include 'templates/cs-footer.php';
+}
+add_action( 'storefront_footer', 'cs_footer', 15 );

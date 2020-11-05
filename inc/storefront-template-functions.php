@@ -136,7 +136,7 @@ if ( ! function_exists( 'storefront_credit' ) ) {
 	function storefront_credit() {
 		$links_output = '';
 
-		if ( apply_filters( 'storefront_credit_link', true ) ) {
+		if ( apply_filters( 'storefront_credit_link', false ) ) {
 			if ( storefront_is_woocommerce_activated() ) {
 				$links_output .= '<a href="https://woocommerce.com" target="_blank" title="' . esc_attr__( 'WooCommerce - The Best eCommerce Platform for WordPress', 'storefront' ) . '" rel="noreferrer">' . esc_html__( 'Built with Storefront &amp; WooCommerce', 'storefront' ) . '</a>.';
 			} else {

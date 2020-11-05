@@ -48,6 +48,21 @@
 		do_action( 'storefront_header' );
 		?>
 
+		<div class="cs-under-nav">
+			<div class="block block1">
+				<?php include 'svg/pig.svg'; ?>
+				5% discount
+			</div>
+			<div class="block block2">
+				<?php include 'svg/free-shipping.svg'; ?>
+				free shipping
+			</div>
+			<div class="block block3">
+				<?php include 'svg/24h-2.svg'; ?>
+				24h shipping
+			</div>
+		</div>
+
 	</header><!-- #masthead -->
 
 	<?php
